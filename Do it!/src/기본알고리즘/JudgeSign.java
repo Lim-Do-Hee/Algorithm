@@ -15,5 +15,12 @@ public class JudgeSign {
             System.out.println("이 수는 음수입니다.");
         else
             System.out.println("이 수는 0입니다.");
+
+        if (n == 1)
+            System.out.println("이 수는 1입니다.");
+        else if (n == 2)
+            System.out.println("이 수는 2입니다.");
+        else if (n == 3)
+            System.out.println("이 수는 3입니다.");
     }
 }
