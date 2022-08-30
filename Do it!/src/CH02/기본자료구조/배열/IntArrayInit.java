@@ -1,4 +1,4 @@
-package 기본자료구조.배열;
+package CH02.기본자료구조.배열;
 
 /** 배열 초기화 */
 public class IntArrayInit {

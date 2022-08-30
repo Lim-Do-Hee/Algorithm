@@ -1,4 +1,4 @@
-package 기본자료구조.배열;
+package CH02.기본자료구조.배열;
 
 /** 확장 for 문 */
 public class ArraySumForIn {

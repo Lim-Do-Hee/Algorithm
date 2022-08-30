@@ -1,4 +1,4 @@
-package 기본자료구조.배열;
+package CH02.기본자료구조.배열;
 
 public class PrimeNumber1 {
     public static void main(String[] args) {

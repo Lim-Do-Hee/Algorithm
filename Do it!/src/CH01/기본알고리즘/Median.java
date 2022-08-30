@@ -1,4 +1,4 @@
-package 기본알고리즘;
+package CH01.기본알고리즘;
 
 import java.util.Scanner;
 /** 세 값의 중앙값 */

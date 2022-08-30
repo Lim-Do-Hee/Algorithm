@@ -1,4 +1,4 @@
-package 기본자료구조.클래스;
+package CH02.기본자료구조.클래스;
 
 import java.util.Scanner;
 
