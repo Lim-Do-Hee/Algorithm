@@ -5,7 +5,7 @@ import java.util.Scanner;
 /** 선형 검색 */
 public class SeqSearch {
     // 요솟수가 n인 배열 a에서 key와 같은 요소를 선형 검색합니다.
-    static int seqSearch(int[] a, int n, int key) {
+    static int seqSearchWhile(int[] a, int n, int key) {
         int i = 0;
 
         while (true) {
@@ -15,6 +15,13 @@ public class SeqSearch {
                 return i; // 검색 성공!(인덱스를 반환)
             i++;
         }
+    }
+
+    static int seqSearchFor(int[] a, int n, int key) {
+        for (int i = 0; i < n; i++)
+            if (a[i] == key)
+                return i;
+        return -1;
     }
 
     public static void main(String[] args) {
@@ -32,7 +39,7 @@ public class SeqSearch {
         System.out.print("검색할 값 : "); // 키 값을 입력
         int ky = stdIn.nextInt();
 
-        int idx = seqSearch(x, num, ky); // 배열 x에서 키 값이 ky인 요소를 검색
+        int idx = seqSearchWhile(x, num, ky); // 배열 x에서 키 값이 ky인 요소를 검색
 
         if (idx == -1)
             System.out.println("그 값의 요소가 없습니다.");
