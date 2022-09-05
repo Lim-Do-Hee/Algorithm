@@ -52,3 +52,20 @@ class BinSearch {
             System.out.println(ky + "은(는) x[" + idx + "]에 있습니다.");
     }
 }
+
+/** Q3 검색 배열 idx 저장, 요솟수 */
+class searchIdx{
+    // 선형검색
+    static int seqSearchIdx(int[] a, int n, int key, int[] idx) {
+        int count = 0;
+
+        for (int i = 0; i < n; i++)
+            if (a[i] == key)
+                idx[count++] = i;
+        return count;
+    }
+
+    public static void main(String[] args) {
+        System.out.println(seqSearchIdx(new int[] {1, 9, 2, 9, 4, 6, 7, 9}, 8, 9, new int[3]));
+    }
+}
