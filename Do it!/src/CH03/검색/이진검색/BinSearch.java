@@ -65,7 +65,28 @@ class searchIdx{
         return count;
     }
 
+    // 이진검색
+    static int binSearchIdx(int[] a, int n, int key, int[] idx) {
+        int count = 0;
+
+        int pl = 0;
+        int pr = n - 1;
+
+        do {
+            int pc = (pl + pr) / 2;
+            if (a[pc] == key)
+                idx[count++] = pc;
+            else if (a[pc] < key)
+                pl = pc + 1;
+            else if (a[pc] > key)
+                pr = pc - 1;
+        } while (pl <= pr);
+
+        return count;
+    }
+
     public static void main(String[] args) {
+        System.out.println(seqSearchIdx(new int[] {1, 9, 2, 9, 4, 6, 7, 9}, 8, 9, new int[3]));
         System.out.println(seqSearchIdx(new int[] {1, 9, 2, 9, 4, 6, 7, 9}, 8, 9, new int[3]));
     }
 }
