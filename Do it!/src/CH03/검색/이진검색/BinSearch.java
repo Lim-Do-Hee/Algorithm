@@ -65,7 +65,7 @@ class searchIdx{
         return count;
     }
 
-    // 이진검색
+    // 이진검색 (오름차순으로 정렬 되어있을 때 가능)
     static int binSearchIdx(int[] a, int n, int key, int[] idx) {
         int count = 0;
 
@@ -88,5 +88,60 @@ class searchIdx{
     public static void main(String[] args) {
         System.out.println(seqSearchIdx(new int[] {1, 9, 2, 9, 4, 6, 7, 9}, 8, 9, new int[3]));
         System.out.println(seqSearchIdx(new int[] {1, 9, 2, 9, 4, 6, 7, 9}, 8, 9, new int[3]));
+    }
+}
+
+/** Q5. 이진 검색 맨 앞의 요소 찾기 */
+class BinSearchX {
+    static int binSearchX(int[] a, int n, int key) {
+        int resultIdx = -1;
+
+        int pl = 0;
+        int pr = n - 1;
+
+        do {
+            int pc = (pl + pr) / 2;
+            if (a[pc] == key) {
+                resultIdx = pc;
+                pr = pc - 1;
+            }
+            else if (a[pc] < key)
+                pl = pc + 1;
+            else if (a[pc] > key)
+                pr = pc - 1;
+        } while (pl <= pr);
+
+        return resultIdx;
+    }
+
+    public static void main(String[] args) {
+        Scanner stdIn = new Scanner(System.in);
+
+        System.out.print("요솟수 : ");
+        int num = stdIn.nextInt();
+        int[] x = new int[num];				// 요솟수가 num 인 배열
+
+        System.out.println("오름차순으로 입력하세요.");
+
+        System.out.print("x[0] : ");		// 맨앞 요소를 입력받음
+        x[0] = stdIn.nextInt();
+
+        for (int i = 1; i < num; i++) {
+            do {
+                System.out.print("x[" + i + "] : ");
+                x[i] = stdIn.nextInt();
+            } while (x[i] < x[i - 1]);	// 바로 앞의 요소보다 작으면 다시 입력 받음
+        }
+
+        System.out.print("검색 값 : ");			// 키값을 입력받음
+        int ky = stdIn.nextInt();
+
+        int idx = binSearchX(x, num, ky);	// 배열 x에서 값이 ky인 요소를 검색
+
+        if (idx == -1)
+            System.out.println("그 값의 요소는 존재하지 않습니다.");
+        else
+            System.out.println("그 값은 x[" + idx + "]에 있습니다.");
+    }
     }
 }
