@@ -164,5 +164,4 @@ class BinSearchX {
         else
             System.out.println("그 값은 x[" + idx + "]에 있습니다.");
     }
-    }
 }
