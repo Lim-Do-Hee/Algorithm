@@ -4,7 +4,7 @@ import java.util.Arrays;
 import java.util.Scanner;
 
 /** 문자열의 배열(Java의 키워드)에서 검색 */
-public class StringBinarySearch {
+class StringBinarySearch {
     public static void main(String[] args) {
         Scanner stdIn = new Scanner(System.in);
 
@@ -32,5 +32,19 @@ public class StringBinarySearch {
             System.out.println("해당 키워드가 없습니다.");
         else
             System.out.println("해당 키워드는 x[" + idx + "]에 있습니다.");
+    }
+}
+
+/** 자연스러운 정렬을 하려면 다음과 같은 방법으로 클래스를 정의합니다. */
+class A implements Comparable<A> {
+    // 필드, 메서드 등
+
+    public int compareTo(A o) {
+        return 0;
+    }
+
+
+    public boolean equals(Object obj) {
+        return true;
     }
 }
