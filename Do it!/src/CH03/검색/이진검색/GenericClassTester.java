@@ -22,3 +22,14 @@ public class GenericClassTester {
         System.out.println(n.getXyz());
     }
 }
+
+/**
+ * 제네릭
+ * 제네릭(Generic)은 클래스 내부에서 지정하는 것이 아닌 외부에서 사용자에 의해 지정되는 것을 의미
+ * <T>	Type
+ * <E>	Element
+ * <K>	Key
+ * <V>	Value
+ * <N>	Number
+ *  제네릭이 사용되는 메소드를 정적메소드로 두고 싶은 경우 제네릭 클래스와 별도로 독립적인 제네릭이 사용되어야 한다
+ */
