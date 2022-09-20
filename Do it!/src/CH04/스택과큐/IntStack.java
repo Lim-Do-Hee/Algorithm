@@ -1,5 +1,7 @@
 package CH04.스택과큐;
 
+import java.util.Scanner;
+
 /**  int형 스택 */
 public class IntStack {
     private int max; // 스택용량
@@ -92,5 +94,149 @@ public class IntStack {
                 System.out.println(stk[i] + " ");
             System.out.println();
     }
+}
 
+/** int형 스택의 사용 예 */
+class IntStackTester {
+    public static void main(String[] args) {
+        Scanner stdIn = new Scanner(System.in);
+        IntStack s = new IntStack(64); // 최대 64개를 푸시할 수 있는 스택
+
+        while (true) {
+            System.out.println("현재 데이터 수 : " + s.size() + " / " + s.capacity());
+            System.out.println("(1)푸시 (2)팝 (3)피크 " + "(4)덤프 (0) 종료 : ");
+
+            int menu = stdIn.nextInt();
+            if (menu == 0) break;
+
+            int x;
+            switch (menu) {
+                case 1: // 푸시
+                    System.out.print("데이터 : ");
+                    x = stdIn.nextInt();
+                    try {
+                        s.push(x);
+                    } catch (IntStack.OverflowIntStackException e) {
+                        System.out.println("스택이 가득 찼습니다");
+                    }
+                    break;
+
+                case 2: // 팝
+                    try {
+                        x = s.pop();
+                        System.out.println("팝한 데이터는 " + x + "입니다.");
+                    } catch (IntStack.EmptyIntStackException e) {
+                        System.out.println("스택이 비어 있습니다.");
+                    }
+                    break;
+
+                case 3: // 피크
+                    try {
+                        x = s.peek();
+                        System.out.println("피크한 데이터는 " + x + "입니다.");
+                    } catch (IntStack.EmptyIntStackException e) {
+                        System.out.println("스택이 비어 있습니다.");
+                    }
+                    break;
+
+                case 4: // 덤프
+                    s.dump();
+                    break;
+            }
+        }
+    }
+}
+
+/** Q1.IntStack의 모든 메서드를 사용하는 프로그램 */
+class IntStackTesterAll {
+    public static void main(String[] args) {
+        Scanner stdIn = new Scanner(System.in);
+        IntStack s = new IntStack(64); // 최대 64개를 푸시할 수 있는 스택
+
+        while (true) {
+            System.out.println("현재 데이터 수 : " + s.size() + " / " + s.capacity());
+            System.out.println("(1)푸시 (2)팝 (3)피크 " + "(4)검색 (5)초기화 (6)용량 " + "(7)데이터 수 (8)Empty (9)Full " +" (10)덤프 (0)종료 : ");
+
+            int menu = stdIn.nextInt();
+            if (menu == 0) break;
+
+            int x;
+            switch (menu) {
+                case 1: // 푸시
+                    System.out.print("데이터 : ");
+                    x = stdIn.nextInt();
+                    try {
+                        s.push(x);
+                    } catch (IntStack.OverflowIntStackException e) {
+                        System.out.println("스택이 가득 찼습니다");
+                    }
+                    break;
+
+                case 2: // 팝
+                    try {
+                        x = s.pop();
+                        System.out.println("팝한 데이터는 " + x + "입니다.");
+                    } catch (IntStack.EmptyIntStackException e) {
+                        System.out.println("스택이 비어 있습니다.");
+                    }
+                    break;
+
+                case 3: // 피크
+                    try {
+                        x = s.peek();
+                        System.out.println("피크한 데이터는 " + x + "입니다.");
+                    } catch (IntStack.EmptyIntStackException e) {
+                        System.out.println("스택이 비어 있습니다.");
+                    }
+                    break;
+
+                case 4: // 검색
+                    try {
+                        int key = stdIn.nextInt();
+                        x = s.indexOf(key);
+                        if (x == -1)
+                            System.out.println("검색 결과가 없습니다.");
+                        else
+                            System.out.println(x + "번 째에 존자합니다.");
+                    } catch (IntStack.EmptyIntStackException e) {
+                        System.out.println("스택이 비어 있습니다.");
+                    }
+                    break;
+
+                case 5: // 초기화
+                    s.clear();
+                    break;
+
+                case 6: // 용량
+                    x = s.capacity();
+                    System.out.println("스택의 용량은 " + x + "입니다.");
+                    break;
+
+                case 7: // 데이터 수
+                    x = s.size();
+                    System.out.println("스택의 데이터 수는 " + x + "입니다.");
+                    break;
+
+                case 8: // Empty 유무 확인
+                    boolean empty = s.isEmpty();
+                    if (empty)
+                        System.out.println("비어있습니다.");
+                    else
+                        System.out.println("비어 있지 않습니다.");
+                    break;
+
+                case 9: // Full 확인
+                    boolean full = s.isFull();
+                    if (full)
+                        System.out.println("가득 찼습니다.");
+                    else
+                        System.out.println("push 가능합니다.");
+                    break;
+
+                case 10: // 덤프
+                    s.dump();
+                    break;
+            }
+        }
+    }
 }
