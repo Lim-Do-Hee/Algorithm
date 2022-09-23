@@ -240,3 +240,170 @@ class IntStackTesterAll {
         }
     }
 }
+
+/** Q3. 하나의 배열을 공유하여 2개의 스택 구현 */
+class IntStackShare {
+    private int max; // 스택 용량
+    private int leftPtr; // 왼쪽 스택 포인터
+    private int rightPtr; // 오른쪽 스택 포인터
+    private int[] stk; // 스택 본체
+
+    public static class EmptyIntStackException extends RuntimeException {
+        public EmptyIntStackException() {}
+    }
+
+    // 실행 시 예외 : 스택이 가득참
+    public static class OverflowIntStackException extends  RuntimeException {
+        public OverflowIntStackException() {}
+    }
+
+    IntStackShare(int max) {
+        this.leftPtr = 0;
+        this.rightPtr = max - 1;
+        this.max = max;
+        try {
+            stk = new int[this.max];
+        } catch (OutOfMemoryError e) {
+            this.max = 0;
+        }
+    }
+
+    // 왼쪽 스택 추가
+    public int pushLeft(int x) throws OverflowIntStackException {
+        if (leftPtr > rightPtr)
+            throw new OverflowIntStackException();
+        return stk[leftPtr++] = x;
+    }
+
+    // 오른쪽 스택 추가
+    public int pushRight(int x) throws OverflowIntStackException {
+        if (rightPtr < leftPtr)
+            throw new OverflowIntStackException();
+        return stk[rightPtr--] = x;
+    }
+
+    // 왼쪽 스택 pop
+    public int popLeft() throws EmptyIntStackException {
+        if (leftPtr <= 0)
+            throw new EmptyIntStackException();
+        return stk[--leftPtr];
+    }
+
+    // 오른쪽 스택 pop
+    public int popRight() throws EmptyIntStackException {
+        if (rightPtr >= max - 1)
+            throw new EmptyIntStackException();
+        return stk[++rightPtr];
+    }
+
+    // 왼쪽 스택 정상에 있는 데이터를 들여다봄
+    public int peekLeft() throws EmptyIntStackException {
+        if (leftPtr <= 0)
+            throw new EmptyIntStackException();
+        return stk[leftPtr - 1];
+    }
+
+    // 오른쪽 스택 정상에 있는 데이터를 들여다봄
+    public int peekRight() throws EmptyIntStackException {
+        if (rightPtr >= max - 1)
+            throw new EmptyIntStackException();
+        return stk[rightPtr + 1];
+    }
+
+    // 스택에서 x를 찾아 인덱스(없으면 -1)를 반환
+    public int indexOf(int x) {
+        // 왼쪽 스택에서 검색
+        for (int i = 0; i < leftPtr; i++)
+            if (stk[i] == x)
+                return i;
+
+        // 오른쪽 스택에서 검색
+        for (int i = rightPtr + 1; i < max; i++)
+            if (stk[i] == x)
+                return i;
+
+        return -1;
+    }
+
+    // 왼쪽, 오른쪽 스택 한번에 비움
+    public void clear() {
+        leftPtr = 0;
+        rightPtr = max - 1;
+    }
+
+    // 왼쪽 스택을 비움
+    public void leftClear() {
+        leftPtr = 0;
+    }
+
+    // 오른쪽 스택을 비움
+    public void rightClear() {
+        rightPtr = max - 1;
+    }
+
+    // 스택의 용량을 반환
+    public int capacity() {
+        return max;
+    }
+
+    // 왼쪽 스택에 쌓여있는 데이터 수를 반환
+    public int leftSize() {
+        return leftPtr;
+    }
+
+    // 오른쪽 스택에 쌓여있는 데이터 수 반환
+    public int rightSize() {
+        return max - rightPtr - 1;
+    }
+
+    // 왼쪽, 오른쪽 스택 합친 데이터 수 반환
+    public int totalSize() {
+        return leftPtr + max - rightPtr - 1;
+    }
+
+    // 왼쪽 스택이 비어 있는가?
+    public boolean isLeftEmpty() {
+        return leftPtr <= 0;
+    }
+
+    // 오른쪽 스택이 비어 있는가?
+    public boolean isRightEmpty() {
+        return rightPtr >= max - 1;
+    }
+
+    // 스택이 가득 찼는가?
+    public boolean isFull() {
+        return leftPtr > rightPtr;
+    }
+
+    // 왼쪽 스택 바닥 -> 꼭대기 출력
+    public void dumpLeft() {
+        if (leftPtr <= 0)
+            System.out.println("스택이 비어 있습니다.");
+        else
+            for (int i = 0; i < leftPtr; i++)
+                System.out.println(stk[i] + " ");
+        System.out.println();
+    }
+
+    // 오른쪽 스택 바닥 -> 꼭대기 출력
+    public void dumpRight() {
+        if (rightPtr >= max - 1)
+            System.out.println("스택이 비어 있습니다.");
+        else
+            for (int i = max - 1; i > rightPtr; i--)
+                System.out.println(stk[i] + " ");
+        System.out.println();
+    }
+}
+
+class IntStackShareTester {
+    public static void main(String[] args) {
+        Scanner stdIn = new Scanner(System.in);
+        IntStackShare s = new IntStackShare(10); // 최대 64개를 푸시할 수 있는 스택
+
+        System.out.println(s.pushLeft(1));
+
+
+    }
+}
