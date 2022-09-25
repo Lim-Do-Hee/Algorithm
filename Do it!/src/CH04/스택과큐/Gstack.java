@@ -31,7 +31,7 @@ public class Gstack<E> {
 
     //--- 스택에 x를 푸시 ---//
     public E push(E x) throws OverflowGstackException {
-        if (ptr >= capacity)								// 스택이 가득 참
+        if (ptr >= max)								// 스택이 가득 참
             throw new OverflowGstackException();
         return stk[ptr++] = x;
     }
