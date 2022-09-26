@@ -45,6 +45,16 @@ public class IntAryQueue {
         return dequeValue;
     }
 
+    public int deque2() throws EmptyIntArrayQueueException {
+        if (num <= 0)
+            throw new EmptyIntArrayQueueException();				// 큐가 비어 있음
+        int x = que[0];
+        for (int i = 0; i < num - 1; i++)
+            que[i] = que[i + 1];
+        num--;
+        return x;
+    }
+
     // 큐에서 데이터를 피크(정상에 있는 데이터를 들여다봄)
     public int peek() throws EmptyIntStackException {
         if (num <= 0)
