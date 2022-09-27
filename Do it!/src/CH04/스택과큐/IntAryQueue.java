@@ -7,13 +7,13 @@ public class IntAryQueue {
     private int[] que; // 큐 본체
 
     // 실행 시 예외 : 큐이 비어 있음
-    public class EmptyIntStackException extends RuntimeException {
-        public EmptyIntStackException() {}
+    public class EmptyIntArrayQueueException extends RuntimeException {
+        public EmptyIntArrayQueueException() {}
     }
 
     // 실행 시 예외 : 큐이 가득참
-    public class OverflowIntStackException extends RuntimeException {
-        public OverflowIntStackException() {}
+    public class OverflowIntArrayQueueException extends RuntimeException {
+        public OverflowIntArrayQueueException() {}
     }
 
     // 생성자
@@ -28,16 +28,16 @@ public class IntAryQueue {
     }
 
     // 큐에 x를 인큐
-    public int enque(int x) throws OverflowIntStackException {
+    public int enque(int x) throws OverflowIntArrayQueueException {
         if (num >= max) // 큐가 가득 참
-            throw new OverflowIntStackException();
+            throw new OverflowIntArrayQueueException();
         return que[num++] = x; // x를 저장한 후의 que[num]값을 반환
     }
 
     // 큐에서 데이터를 디큐(맨 앞에 있는 데이터를 꺼냄)
-    public int deque() throws EmptyIntStackException {
+    public int deque() throws EmptyIntArrayQueueException {
         if (num <= 0) // 큐가 비어있음
-            throw new EmptyIntStackException();
+            throw new EmptyIntArrayQueueException();
         int dequeValue = que[0];
         for (int i = 1; i < num; i++)
             que[i - 1] = que[i];
@@ -56,9 +56,9 @@ public class IntAryQueue {
     }
 
     // 큐에서 데이터를 피크(정상에 있는 데이터를 들여다봄)
-    public int peek() throws EmptyIntStackException {
+    public int peek() throws EmptyIntArrayQueueException {
         if (num <= 0)
-            throw new EmptyIntStackException();
+            throw new EmptyIntArrayQueueException();
         return que[num - 1];
     }
 
