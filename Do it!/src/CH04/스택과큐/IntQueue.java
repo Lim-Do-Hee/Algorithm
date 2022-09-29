@@ -68,6 +68,16 @@ public class IntQueue {
         return -1; // 검색 실패
     }
 
+    /** Q5. search intQueue 큐 안에서 몇번 째에 있는지 반환 */
+    public int search(int x) {
+        for (int i = 0; i < num; i++) {
+            int idx = (i + front) % max;
+            if (que[idx] == x)
+                return i + 1;
+        }
+        return 0;
+    }
+
     // 큐를 비움
     public void clear() {
         num = front = rear = 0;
