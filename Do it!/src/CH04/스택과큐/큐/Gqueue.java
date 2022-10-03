@@ -1,4 +1,4 @@
-package CH04.스택과큐;
+package CH04.스택과큐.큐;
 
 /** Q6. 제네릭 큐 */
 public class Gqueue<E> {

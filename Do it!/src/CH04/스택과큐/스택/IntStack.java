@@ -1,4 +1,4 @@
-package CH04.스택과큐;
+package CH04.스택과큐.스택;
 
 import java.util.Scanner;
 

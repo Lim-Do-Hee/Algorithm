@@ -1,4 +1,4 @@
-package CH04.스택과큐;
+package CH04.스택과큐.큐;
 import java.util.Scanner;
 
 /** 원하는 개수만큼 값을 입력 받아 요솟수가 N인 배열에 마지막 N개를 저장 */

@@ -1,4 +1,4 @@
-package CH04.스택과큐;
+package CH04.스택과큐.큐;
 
 /** Q4. 큐 구현 */
 public class IntAryQueue {

@@ -1,4 +1,4 @@
-package CH04.스택과큐;
+package CH04.스택과큐.스택;
 
 /** Q2. 제네릭 스택 클래스 */
 public class Gstack<E> {

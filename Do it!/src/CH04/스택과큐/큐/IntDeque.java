@@ -1,4 +1,4 @@
-package CH04.스택과큐;
+package CH04.스택과큐.큐;
 
 /** Q7. IntDeque */
 public class IntDeque {
