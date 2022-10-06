@@ -64,7 +64,7 @@ public class IntDeque {
     }
 
     // 오른쪽 deque
-    public int leftDeque() throws EmptyDequeException {
+    public int rightDeque() throws EmptyDequeException {
         if (num <= 0)
             throw new EmptyDequeException();
         int x = deque[rightFront--];
