@@ -36,8 +36,9 @@ class Gcd {
         }
 
         while (y % x != 0) {
+            int prevY = y;
             y = x;
-            x = y % x;
+            x = prevY % x;
         }
 
         return x;
