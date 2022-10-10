@@ -13,6 +13,15 @@ class Recur {
         }
     }
 
+    // 꼬리 재귀를 제거
+    static void recur2(int n) {
+        while (n > 0) {
+            recur2(n - 1);
+            System.out.println(n);
+            n = n - 2;
+        }
+    }
+
     public static void main(String[] args) {
         Scanner stdIn = new Scanner(System.in);
 
