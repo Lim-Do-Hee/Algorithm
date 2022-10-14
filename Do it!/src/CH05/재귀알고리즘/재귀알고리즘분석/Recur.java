@@ -49,6 +49,6 @@ class Recur {
         System.out.print("정수를 입력하세요. : ");
         int x = stdIn.nextInt();
 
-        recur(x);
+        recurX2(x);
     }
 }
