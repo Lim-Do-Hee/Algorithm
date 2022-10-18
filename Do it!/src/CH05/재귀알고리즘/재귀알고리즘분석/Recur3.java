@@ -22,22 +22,22 @@ public class Recur3 {
                 continue;
             }
 
-            if (!nStk.isEmpty()) { // 스택이 비어있지 않다면
+            do {
                 n = nStk.pop(); // 저장하고 있떤 스택의 값을 팝
                 sw = sStk.pop() + 1;
                 if (sw == 2) {
                     System.out.println(n);
-                    n = nStk.pop();
-                    sw = sStk.pop() + 1;
+                    if (sStk.isEmpty()) {
+                        return;
+                    }
+
                 }
-                continue;
-            }
-            break;
+            } while (sw == 2);
         }
     }
 
     public static void main(String[] args) {
-        recur3(4);
+        recur3(3);
     }
 }
 
