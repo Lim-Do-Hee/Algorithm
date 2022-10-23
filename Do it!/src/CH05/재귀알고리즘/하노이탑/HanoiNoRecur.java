@@ -25,6 +25,9 @@ public class HanoiNoRecur {
                 no = noStack.pop();
                 x = xStack.pop();
                 y = yStack.pop();
+                // x = 6 - x - y를 여기서 하면 안됨
+                // 1, 1, 3 을 출력하고 2, 1, 2로 돌아간다음 1, 3, 2로 돌아가야된다.
+                // pop의 시점 조정 필요
                 x = 6 - x - y;
             }
 
