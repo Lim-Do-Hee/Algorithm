@@ -10,27 +10,38 @@ public class HanoiNoRecur {
         IntStack noStack = new IntStack(100);
         IntStack xStack = new IntStack(100);
         IntStack yStack = new IntStack(100);
+        IntStack swStack = new IntStack(100);
+
+        int sw = 0;
+
         while (true) {
-            if (no > 1) {
+            if (no > 0) {
                 noStack.push(no);
                 xStack.push(x);
                 yStack.push(y);
+                swStack.push(sw);
+
                 no -= 1;
                 y = 6 - x - y;
                 continue;
             }
 
             if (!xStack.isEmpty() && !yStack.isEmpty()) {
-                System.out.println("원반[" + no + "]을 " + x + "기둥에서 " + y + "기둥으로 옮김");
                 no = noStack.pop();
                 x = xStack.pop();
                 y = yStack.pop();
-                // x = 6 - x - y를 여기서 하면 안됨
-                // 1, 1, 3 을 출력하고 2, 1, 2로 돌아간다음 1, 3, 2로 돌아가야된다.
-                // pop의 시점 조정 필요
-                x = 6 - x - y;
-            }
+                sw = swStack.pop() + 1;
 
+                if (sw == 1) {
+                    System.out.println("원반[" + no + "]을 " + x + "기둥에서 " + y + "기둥으로 옮김");
+                }
+
+                no -= 1;
+                x = 6 - x - y;
+                sw = 0;
+                continue;
+            }
+            break;
         }
     }
 
