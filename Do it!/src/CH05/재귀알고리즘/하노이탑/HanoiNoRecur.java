@@ -4,6 +4,7 @@ import CH05.재귀알고리즘.재귀알고리즘분석.IntStack;
 
 import java.util.Scanner;
 
+/** Q7. 재귀없는 하노이 */
 public class HanoiNoRecur {
 
     static void move(int no, int x, int y) {
