@@ -1,7 +1,7 @@
 package CH05.재귀알고리즘.퀸8;
 
-/** 8퀸 문제 풀이 */
-class EightQueen {
+/** 8퀸 print(■, □) */
+class EightQueen2 {
     static boolean[] flag_a = new boolean[8];     // 각 행에 퀸을 배치했는지 체크
     static boolean[] flag_b = new boolean[15];    // 대각선 ↙에 퀸을 배치했는지 체크
     static boolean[] flag_c = new boolean[15];    // 대각선 ↘에 퀸이 배치했는지 체크
@@ -10,7 +10,7 @@ class EightQueen {
     // 각 열의 퀸의 위치를 출력
     static void print() {
         for (int i = 0; i < 8; i++)
-            System.out.printf("%2d", pos[i]);
+            System.out.print(flag_a[i] ? '■' : '□');
         System.out.println();
     }
 
@@ -36,4 +36,3 @@ class EightQueen {
         set(0);
     }
 }
-
