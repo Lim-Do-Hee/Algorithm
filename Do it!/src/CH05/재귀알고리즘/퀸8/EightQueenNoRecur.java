@@ -13,8 +13,26 @@ public class EightQueenNoRecur {
         System.out.println();
     }
 
-    // i열의 알맞은 위치에 퀸을 배치
     static void set(int i) {
+        // 재귀에 필요한 반복문
+        while (true) {
+
+        }
+        // 가로(j행)에 아직 배치하지 않았습니다.
+        // 대각선 ↙에 아직 배치하지 않았습니다.
+        // 대각선 ↘에 아직 배치하지 않았습니다.
+        // 퀸을 j행에 배치합니다.
+        // 모든 열에 배치했다면
+        // iStack에서 pop
+        // flag_a, flag_b, falg_c 해당 index에 false
+        // 모든 열에 배치하지 않았다면
+        // flag_a, flag_b, falg_c 해당 index에 true
+        // iStack에 현재 i push
+
+    }
+
+    // i열의 알맞은 위치에 퀸을 배치
+    static void set2(int i) {
         for (int j = 0; j < 8; j++) {
             if (!flag_a[j] &&                            // 가로(j행)에 아직 배치하지 않았습니다.
                 !flag_b[i + j] &&                        // 대각선 ↙에 아직 배치하지 않았습니다.
