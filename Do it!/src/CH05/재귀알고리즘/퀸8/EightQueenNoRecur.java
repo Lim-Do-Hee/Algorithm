@@ -7,8 +7,9 @@ public class EightQueenNoRecur {
     static boolean[] flag_b = new boolean[15];    // 대각선 ↙에 퀸을 배치했는지 체크
     static boolean[] flag_c = new boolean[15];    // 대각선 ↘에 퀸이 배치했는지 체크
     static int[] pos = new int[8];    // 각 열의 퀸의 위치
-    static IntStack iStk = new IntStack(30); // 열 i 스택
-    static IntStack jStk = new IntStack(30); // 행 j 스택
+    static IntStack iStk = new IntStack(30); // set 메서드 매개변수 i 스택
+    static IntStack jStk = new IntStack(30); // set 메서드 j 스택
+    static int j = 0; // for문 j
 
     // 각 열의 퀸의 위치를 출력
     static void print() {
@@ -21,7 +22,7 @@ public class EightQueenNoRecur {
         // 재귀에 필요한 반복문
         while (true) {
             boolean isAllCheck = true;
-            for (int j = 0; j < 8; j++) {
+            for (; j < 8; j++) {
                 if (!flag_a[j] &&                // 가로(j행)에 아직 배치하지 않았습니다.
                         !flag_b[i + j] &&            // 대각선 ↙에 아직 배치하지 않았습니다.
                         !flag_c[i - j + 7])          // 대각선 ↘에 아직 배치하지 않았습니다.
@@ -34,33 +35,21 @@ public class EightQueenNoRecur {
                         iStk.push(i);            // iStack에 현재 i push
                         jStk.push(j);            // jStack에 현재 j push
                         i += 1;
+                        j = 0;                   // j 초기화
                         isAllCheck = false;
                         break;
                     }
                 }
             }
-            if (isAllCheck) {
-                int j = jStk.pop();
-                flag_a[j] = flag_b[i + j] = flag_c[i - j + 7] = false; // flag_a, flag_b, falg_c 해당 index에 false
-                i = iStk.pop();          // iStack에서 pop
-            }
-        }
-    }
-
-    // i열의 알맞은 위치에 퀸을 배치
-    static void set2(int i) {
-        for (int j = 0; j < 8; j++) {
-            if (!flag_a[j] &&                            // 가로(j행)에 아직 배치하지 않았습니다.
-                !flag_b[i + j] &&                        // 대각선 ↙에 아직 배치하지 않았습니다.
-                !flag_c[i - j + 7]) {                    // 대각선 ↘에 아직 배치하지 않았습니다.
-                pos[i] = j;                              // 퀸을 j행에 배치합니다.
-                if (i == 7)                              // 모든 열에 배치했다면
-                    print();
-                else {
-                    flag_a[j] = flag_b[i + j] = flag_c[i - j + 7] = true;
-                    set(i + 1);
-                    flag_a[j] = flag_b[i + j] = flag_c[i - j + 7] = false;
+            if (!iStk.isEmpty() && !jStk.isEmpty()) {
+                if (isAllCheck) {
+                    i = iStk.pop();          // iStack에서 pop
+                    j = jStk.pop();
+                    flag_a[j] = flag_b[i + j] = flag_c[i - j + 7] = false; // flag_a, flag_b, falg_c 해당 index에 false
+                    j++;
                 }
+            } else {
+                break;
             }
         }
     }
